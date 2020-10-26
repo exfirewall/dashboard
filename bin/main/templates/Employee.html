@@ -401,6 +401,22 @@
         </div>
         <!-- page start-->
         <h1>List of Employees</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>JOB</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="employee:${employees}">
+              <td th:text="${employee.empno}"></td>
+              <td th:text="${employee.ename}"></td>
+              <td th:text="${employee.job}"></td>
+            </tr>
+          </tbody>
+        </table>
         <!-- page end-->
       </section>
     </section>
