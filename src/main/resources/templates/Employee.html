@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -410,11 +409,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr th:each="employee:${employees}">
-              <td th:text="${employee.empno}"></td>
-              <td th:text="${employee.ename}"></td>
-              <td th:text="${employee.job}"></td>
+            
+            <tr th:each="Employee:${employee}">
+              <td th:text="${Employee.empno}"></td>
+              <td th:text="${Employee.ename}"></td>
+              <td th:text="${Employee.job}"></td>
             </tr>
+            
           </tbody>
         </table>
         <!-- page end-->

@@ -16,13 +16,16 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping("/Employee")
+    @GetMapping("/employee")
     public String getEmployees(Model model){
 
         List<Employee> employeeList = employeeService.getEmployees();
 
+        /* for( Employee e : employeeList){
+            System.out.println(e.toString());
+        } */
         model.addAttribute("employee", employeeList);
-
-        return "Employee";
+        
+        return "employee";
     }
 }

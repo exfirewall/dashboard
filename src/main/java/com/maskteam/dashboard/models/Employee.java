@@ -1,37 +1,48 @@
 package com.maskteam.dashboard.models;
 
-import java.util.Date;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import org.hibernate.annotations.CollectionId;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+@Entity // This tells Hibernate to make a table out of this class
+public class Employee {
+  @Id
+  @Column(name="empno")
+  @GeneratedValue(strategy=GenerationType.AUTO)
+  private Integer empno;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+  @Column(name="ename")
+  private String ename;
 
-@Entity
-@Data
-@EqualsAndHashCode(callSuper=false)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Employee extends Person {
-		
-	@ManyToOne
-	@JoinColumn(name="employeetypeid", insertable=false, updatable=false)
-	private EmployeeType employeeType;
-	private Integer employeetypeid;
-	private String photo;
-	private String username;
-	
-	@ManyToOne
-	@JoinColumn(name="jobtitleid", insertable=false, updatable=false)
-	private JobTitle jobTitle;
-	private Integer jobtitleid;
-	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")	
-	private Date hireDate;
+  @Column(name="job")
+  private String job;
+
+  public Integer getId() {
+    return empno;
+  }
+
+  public void setId(Integer id) {
+    this.empno = id;
+  }
+
+  public String getName() {
+    return ename;
+  }
+
+  public void setName(String name) {
+    this.ename = name;
+  }
+
+  public String getJob() {
+    return job;
+  }
+
+  public void setEmail(String job) {
+    this.job = job;
+  }
 }
