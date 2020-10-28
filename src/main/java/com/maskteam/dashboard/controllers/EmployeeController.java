@@ -2,7 +2,9 @@ package com.maskteam.dashboard.controllers;
 
 import java.util.List;
 
+import com.maskteam.dashboard.DTO.EmployeeDTO;
 import com.maskteam.dashboard.models.Employee;
+import com.maskteam.dashboard.repositories.EmployeeRepository;
 import com.maskteam.dashboard.services.EmployeeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,7 @@ public class EmployeeController {
     @GetMapping("/employee")
     public String getEmployees(Model model){
 
-        List<Employee> employeeList = employeeService.getEmployees();
+        List<EmployeeDTO> employeeList = employeeService.getEmployeelist();
 
         /* for( Employee e : employeeList){
             System.out.println(e.toString());

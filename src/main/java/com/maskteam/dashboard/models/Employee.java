@@ -9,7 +9,14 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.CollectionId;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 @Entity // This tells Hibernate to make a table out of this class
+@Getter
+@Builder
+@NoArgsConstructor
 public class Employee {
   @Id
   @Column(name="empno")
@@ -45,4 +52,11 @@ public class Employee {
   public void setEmail(String job) {
     this.job = job;
   }
+
+  @Builder
+    public Employee(Integer empno, String ename, String job) {
+        this.empno = empno;
+        this.ename = ename;
+        this.job = job;
+	}
 }
