@@ -30,7 +30,7 @@ public class Employee {
   @Column(name="job")
   private String job;
 
-  @Column(name="dept")
+  @Column(name="deptno")
   private Integer deptId;
 
   public Integer getId() {
@@ -61,15 +61,15 @@ public class Employee {
     return deptId;
   }
 
-  
   public void setDeptId(Integer deptId) {
     this.deptId = deptId;
   }
 
   @Builder
-    public Employee(Integer empno, String ename, String job) {
+    public Employee(Integer empno, String ename, String job, Integer deptId) {
         this.empno = empno;
         this.ename = ename;
         this.job = job;
+        this.deptId = deptId;
 	}
 }
