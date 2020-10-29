@@ -11,6 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class EmployeeController {
@@ -23,11 +29,24 @@ public class EmployeeController {
 
         List<EmployeeDTO> employeeList = employeeService.getEmployeelist();
 
-        /* for( Employee e : employeeList){
-            System.out.println(e.toString());
-        } */
         model.addAttribute("employee", employeeList);
         
         return "employee";
     }
+
+    @RequestMapping(value="/employee/addNew", method=RequestMethod.POST)
+    public String addNew(@ModelAttribute EmployeeDTO employeeDto){
+        System.out.println(employeeDto.getEmpno());
+        System.out.println(employeeDto.getEname());
+        System.out.println(employeeDto.getJob());
+
+        employeeService.save(employeeDto);
+        return "redirect:/employee";
+    }
+
+    /* @PostMapping("/customer")
+    public String createCustomer(Customer customer, Model model) {
+    customerRepository.save(customer);
+    return "customer";
+    }*/
 }
