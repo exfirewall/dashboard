@@ -25,6 +25,7 @@ public class EmployeeService {
                     .empno(EmployeeEntity.getId())
                     .ename(EmployeeEntity.getEname())
                     .job(EmployeeEntity.getJob())
+                    .deptId(EmployeeEntity.getDeptId())
                     .build();
 
             EmployeeDtoList.add(employeeDTO);
