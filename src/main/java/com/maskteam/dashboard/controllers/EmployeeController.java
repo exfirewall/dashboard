@@ -44,9 +44,4 @@ public class EmployeeController {
         return "redirect:/employee";
     }
 
-    /* @PostMapping("/customer")
-    public String createCustomer(Customer customer, Model model) {
-    customerRepository.save(customer);
-    return "customer";
-    }*/
 }

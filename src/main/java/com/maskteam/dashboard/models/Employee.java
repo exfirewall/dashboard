@@ -17,10 +17,11 @@ import lombok.NoArgsConstructor;
 @Getter
 @Builder
 @NoArgsConstructor
+@Table(name="employee")
 public class Employee {
   @Id
   @Column(name="empno")
-  @GeneratedValue(strategy=GenerationType.AUTO)
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Integer empno;
 
   @Column(name="ename")
@@ -28,6 +29,9 @@ public class Employee {
 
   @Column(name="job")
   private String job;
+
+  @Column(name="dept")
+  private Integer deptId;
 
   public Integer getId() {
     return empno;
@@ -49,8 +53,17 @@ public class Employee {
     return job;
   }
 
-  public void setEmail(String job) {
+  public void setJob(String job) {
     this.job = job;
+  }
+
+  public Integer getDeptId() {
+    return deptId;
+  }
+
+  
+  public void setDeptId(Integer deptId) {
+    this.deptId = deptId;
   }
 
   @Builder

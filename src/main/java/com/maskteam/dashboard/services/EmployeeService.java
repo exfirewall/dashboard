@@ -15,6 +15,7 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    //return list of empolyees
     public List<EmployeeDTO> getEmployeelist(){
     List<Employee> EmployeeEntities = employeeRepository.findAll();
     List<EmployeeDTO> EmployeeDtoList = new ArrayList<>();
@@ -30,5 +31,10 @@ public class EmployeeService {
         }
 
         return EmployeeDtoList;
+    }
+
+    // Add new employee
+    public void save(EmployeeDTO employee){
+        employeeRepository.save(employee.toEntity());
     }
 }
