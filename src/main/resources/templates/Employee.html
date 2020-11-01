@@ -419,7 +419,7 @@
               <td th:text="${Employee.deptId}"></td>
               <td>
                 <div class="btn-group">
-                  <a class="btn btn-primary" id="editButton">Edit</a>
+                  <a th:href="@{/employee/findById/(id=${Employee.empno})}" class="btn btn-primary" id="editButton">Edit</a>
                 </div>
               </td>
             </tr>
@@ -496,25 +496,26 @@
           </button>
         </div>
         <div class="modal-body">
-          <form th:action="@{/employee/addNew}" method="post">
+          <form th:action="@{/employee/update}" method="put">
+            
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Id</label>
-              <input type="text" class="form-control" id="descriptionEdit" name="empno">
+              <input type="text" class="form-control" id="empnoEdit" name="empno">
             </div>
             
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">name</label>
-              <input type="text" class="form-control" id="descriptionEdit" name="ename">
+              <input type="text" class="form-control" id="enameEdit" name="ename">
             </div>
 
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">job</label>
-              <input type="text" class="form-control" id="descriptionEdit" name="job">
+              <input type="text" class="form-control" id="jobEdit" name="job">
             </div>
           
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">deptId</label>
-              <input type="text" class="form-control" id="descriptionEdit" name="deptId">
+              <input type="text" class="form-control" id="deptIdEdit" name="deptId">
             </div>
 
             <div class="form-group">
@@ -537,7 +538,7 @@
   <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
   <!--custome script for all page-->
   <script src="js/scripts.js"></script>
-
+  <script src="js/employee.js"></script>
 
 </body>
 

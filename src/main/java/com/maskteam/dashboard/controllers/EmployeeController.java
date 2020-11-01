@@ -1,6 +1,7 @@
 package com.maskteam.dashboard.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.maskteam.dashboard.DTO.EmployeeDTO;
 import com.maskteam.dashboard.models.Employee;
@@ -20,27 +21,35 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class EmployeeController {
-    
+
     @Autowired
     private EmployeeService employeeService;
 
     @GetMapping("/employee")
-    public String getEmployees(Model model){
+    public String getEmployees(Model model) {
 
         List<EmployeeDTO> employeeList = employeeService.getEmployeelist();
 
         model.addAttribute("employee", employeeList);
-        
+
         return "employee";
     }
 
-    @RequestMapping(value="/employee/addNew", method=RequestMethod.POST)
-    public String addNew(@ModelAttribute EmployeeDTO employeeDto){
-        System.out.println(employeeDto.getEmpno());
-        System.out.println(employeeDto.getEname());
-        System.out.println(employeeDto.getJob());
-
+    @RequestMapping(value = "/employee/addNew", method = RequestMethod.POST)
+    public String addNew(@ModelAttribute EmployeeDTO employeeDto) {
         employeeService.save(employeeDto);
+        return "redirect:/employee";
+    }
+
+    @RequestMapping("/employee/findById")
+    @ResponseBody
+    public Optional<Employee> findById(int id) {
+        return employeeService.findById(id);
+    }
+
+    @RequestMapping(value="/employee/update", method={RequestMethod.PUT, RequestMethod.GET})
+    public String update(EmployeeDTO employee){
+        employeeService.save(employee);
         return "redirect:/employee";
     }
 
