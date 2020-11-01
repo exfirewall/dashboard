@@ -407,6 +407,7 @@
               <th>Name</th>
               <th>JOB</th>
               <th>Dept</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -416,6 +417,11 @@
               <td th:text="${Employee.ename}"></td>
               <td th:text="${Employee.job}"></td>
               <td th:text="${Employee.deptId}"></td>
+              <td>
+                <div class="btn-group">
+                  <a class="btn btn-primary" id="editButton">Edit</a>
+                </div>
+              </td>
             </tr>
             
           </tbody>
@@ -480,7 +486,49 @@
       </div>
     </div>
   </div>
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Employee</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form th:action="@{/employee/addNew}" method="post">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Id</label>
+              <input type="text" class="form-control" id="descriptionEdit" name="empno">
+            </div>
+            
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">name</label>
+              <input type="text" class="form-control" id="descriptionEdit" name="ename">
+            </div>
 
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">job</label>
+              <input type="text" class="form-control" id="descriptionEdit" name="job">
+            </div>
+          
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">deptId</label>
+              <input type="text" class="form-control" id="descriptionEdit" name="deptId">
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- javascripts -->
   <script src="js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
