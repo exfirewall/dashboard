@@ -36,6 +36,11 @@ public class EmployeeService {
         employeeRepository.save(employee.toEntity());
     }
 
+    // Delete employee record
+    public void delete(Integer id) {
+        employeeRepository.deleteById(id);
+    }
+
     // Get by id
     public Optional<Employee> findById(Integer id) {
         return employeeRepository.findById(id);

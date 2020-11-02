@@ -53,4 +53,9 @@ public class EmployeeController {
         return "redirect:/employee";
     }
 
+    @RequestMapping(value="/employee/delete", method={RequestMethod.DELETE, RequestMethod.GET})
+    public String delete(Integer id){
+        employeeService.delete(id);
+        return "redirect:/employee";
+    }
 }
