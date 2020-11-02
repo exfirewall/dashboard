@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class EmployeeController {
+    private static final String REDIRECT = "redirect:/employee";
 
     @Autowired
     private EmployeeService employeeService;
@@ -38,7 +39,7 @@ public class EmployeeController {
     @RequestMapping(value = "/employee/addNew", method = RequestMethod.POST)
     public String addNew(@ModelAttribute EmployeeDTO employeeDto) {
         employeeService.save(employeeDto);
-        return "redirect:/employee";
+        return REDIRECT;
     }
 
     @RequestMapping("/employee/findById")
@@ -50,12 +51,12 @@ public class EmployeeController {
     @RequestMapping(value="/employee/update", method={RequestMethod.PUT, RequestMethod.GET})
     public String update(@ModelAttribute EmployeeDTO employee){
         employeeService.save(employee);
-        return "redirect:/employee";
+        return REDIRECT;
     }
 
     @RequestMapping(value="/employee/delete", method={RequestMethod.DELETE, RequestMethod.GET})
     public String delete(Integer id){
         employeeService.delete(id);
-        return "redirect:/employee";
+        return REDIRECT;
     }
 }
