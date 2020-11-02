@@ -11,14 +11,16 @@ import lombok.Builder;
 @Setter
 @NoArgsConstructor
 public class EmployeeDTO {
-    private Integer empno;
+    private Integer empCode;
+    private Integer id;
     private String ename;
     private String job;
     private Integer deptId;
 
     @Builder
-    public EmployeeDTO(Integer empno, String ename, String job, Integer deptId) {
-        this.empno = empno;
+    public EmployeeDTO(Integer empCode, Integer id, String ename, String job, Integer deptId) {
+        this.empCode= empCode;
+        this.id = id;
         this.ename = ename;
         this.job = job;
         this.deptId = deptId;
@@ -26,7 +28,8 @@ public class EmployeeDTO {
 
     public Employee toEntity(){
         return Employee.builder()
-                .empno(empno)
+                .empCode(empCode)
+                .id(id)
                 .ename(ename)
                 .job(job)
                 .deptId(deptId)

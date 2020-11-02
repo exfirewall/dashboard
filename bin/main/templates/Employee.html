@@ -403,9 +403,9 @@
         <table class="table">
           <thead>
             <tr>
-              <th>ID</th>
+              <th>Code</th>
               <th>Name</th>
-              <th>JOB</th>
+              <th>Job</th>
               <th>Dept</th>
               <th>Action</th>
             </tr>
@@ -413,13 +413,13 @@
           <tbody>
             
             <tr th:each="Employee:${employee}">
-              <td th:text="${Employee.empno}"></td>
+              <td th:text="${Employee.empCode}"></td>
               <td th:text="${Employee.ename}"></td>
               <td th:text="${Employee.job}"></td>
               <td th:text="${Employee.deptId}"></td>
               <td>
                 <div class="btn-group">
-                  <a th:href="@{/employee/findById/(id=${Employee.empno})}" class="btn btn-primary" id="editButton">Edit</a>
+                  <a th:href="@{/employee/findById/(id=${Employee.id})}" class="btn btn-primary" id="editButton">Edit</a>
                 </div>
               </td>
             </tr>
@@ -454,9 +454,10 @@
         </div>
         <div class="modal-body">
           <form th:action="@{/employee/addNew}" method="post">
+
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Id</label>
-              <input type="text" class="form-control" id="recipient-name" name="empno">
+              <label for="recipient-name" class="col-form-label">code</label>
+              <input type="text" class="form-control" id="recipient-name" name="empCode">
             </div>
             
             <div class="form-group">
@@ -497,10 +498,14 @@
         </div>
         <div class="modal-body">
           <form th:action="@{/employee/update}" method="put">
-            
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Id</label>
-              <input type="text" class="form-control" id="empnoEdit" name="empno">
+              <input type="text" class="form-control" id="idEdit" name="id">
+            </div>
+
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Code</label>
+              <input type="text" class="form-control" id="empcodeEdit" name="empCode">
             </div>
             
             <div class="form-group">

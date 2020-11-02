@@ -18,25 +18,36 @@ import lombok.NoArgsConstructor;
 @Table(name="employee")
 public class Employee {
   @Id
-  @Column(name="empno")
+  @Column(name="employee_id")
   @GeneratedValue(strategy=GenerationType.IDENTITY)
-  private Integer empno;
+  private Integer id;
 
-  @Column(name="ename")
+  @Column(name="employee_code")
+  private Integer empCode;
+
+  @Column(name="employee_name")
   private String ename;
 
   @Column(name="job")
   private String job;
 
-  @Column(name="deptno")
+  @Column(name="department_id")
   private Integer deptId;
 
   public Integer getId() {
-    return empno;
+    return id;
   }
 
   public void setId(Integer id) {
-    this.empno = id;
+    this.id = id;
+  }
+
+  public Integer getCode() {
+    return empCode;
+  }
+
+  public void setCode(Integer empCode) {
+    this.empCode = empCode;
   }
 
   public String getName() {
@@ -64,8 +75,9 @@ public class Employee {
   }
 
   @Builder
-    public Employee(Integer empno, String ename, String job, Integer deptId) {
-        this.empno = empno;
+    public Employee(Integer empCode, Integer id, String ename, String job, Integer deptId) {
+        this.empCode = empCode;
+        this.id = id;
         this.ename = ename;
         this.job = job;
         this.deptId = deptId;

@@ -22,10 +22,9 @@ public class EmployeeService {
         List<EmployeeDTO> EmployeeDtoList = new ArrayList<>();
 
         for (Employee EmployeeEntity : EmployeeEntities) {
-            EmployeeDTO employeeDTO = EmployeeDTO.builder().empno(EmployeeEntity.getId())
+            EmployeeDTO employeeDTO = EmployeeDTO.builder().empCode(EmployeeEntity.getCode()).id(EmployeeEntity.getId())
                     .ename(EmployeeEntity.getEname()).job(EmployeeEntity.getJob()).deptId(EmployeeEntity.getDeptId())
                     .build();
-
             EmployeeDtoList.add(employeeDTO);
         }
 

@@ -9,9 +9,9 @@ public class AppController {
     
     @GetMapping("/index")
     public String goHome(){
-
-        RaspClient client = new RaspClient(1);
-        System.out.println(client.getResult());
+        //Socket client to rasp Server...
+        //RaspClient client = new RaspClient(1);
+        //System.out.println(client.getResult());
 
         return "index";
     }

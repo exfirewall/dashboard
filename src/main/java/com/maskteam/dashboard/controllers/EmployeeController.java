@@ -48,7 +48,7 @@ public class EmployeeController {
     }
 
     @RequestMapping(value="/employee/update", method={RequestMethod.PUT, RequestMethod.GET})
-    public String update(EmployeeDTO employee){
+    public String update(@ModelAttribute EmployeeDTO employee){
         employeeService.save(employee);
         return "redirect:/employee";
     }
