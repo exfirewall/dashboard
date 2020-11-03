@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.Socket;
 
 public class RaspClient {
-    Socket socket = null;
+	Socket socket = null;
 	String serverIp = "192.168.43.187";
 	int serverPort = 8080;
 	Integer flag;
@@ -15,12 +15,24 @@ public class RaspClient {
         System.out.println("서버에 연결 시도....");
 		try {
 			// 서버 연결
+			byte[] bytes = null;
+			String message = null;
+
 			socket = new Socket(serverIp, serverPort); // socket(),connect();
 			System.out.println("서버에 연결되었습니다.");
             System.out.println(serverIp + " : " + serverPort);
             
 			Send(socket, 1);
-			System.out.println("result from server : " + result);
+
+			InputStream is = socket.getInputStream();
+
+			bytes = new byte[100];
+
+			int readByteCount = is.read(bytes);
+
+			message = new String(bytes, 0, readByteCount, "UTF-8");
+			
+			System.out.println("result from server : " + message);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}// catch
