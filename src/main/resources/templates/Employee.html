@@ -320,34 +320,23 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
-          <li class="active">
+          <li>
             <a class="" th:href="@{/index}">
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
           </li>
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
+          <li class="active">
+            <a class="" th:href="@{/employee}">
                           <i class="icon_document_alt"></i>
                           <span>Employee</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
-            <ul class="sub">
-              <li><a class="" th:href="@{/employee}">tables</a></li>
-              <li><a class="" href="form_validation.html">Form Validation</a></li>
-            </ul>
           </li>
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
+          <li>
+            <a class="" th:href="@{/accesstime}">
                           <i class="icon_desktop"></i>
-                          <span>UI Fitures</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
+                          <span>Access Time</span>
                       </a>
-            <ul class="sub">
-              <li><a class="" href="general.html">Elements</a></li>
-              <li><a class="" href="buttons.html">Buttons</a></li>
-              <li><a class="" href="grids.html">Grids</a></li>
-            </ul>
           </li>
           <li>
             <a class="" href="widgets.html">
@@ -410,20 +399,27 @@
           </div>
         </div>
         <!-- page start-->
+        <div class="row">
+        <div class="col-lg-12">
+
+    
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" data-whatever="@mdo">New Employee</button>
-        <table class="table">
-          <thead>
+        <table class="table table-striped table-advance table-hover">
+          <tbody>
             <tr>
+              <th>Photo</th>
               <th>Code</th>
               <th>Name</th>
               <th>Job</th>
               <th>Dept</th>
-              <th>Action</th>
+              <th><em class="icon_cogs"></em>Action</th>
             </tr>
-          </thead>
-          <tbody>
-            
             <tr th:each="Employee:${employee}">
+              <td>
+                <a id="photoButton" th:href="@{'/img/photos/'+${Employee.ename} + ${Employee.id} +'.jpg'}">
+                  <img th:src="@{'/img/photos/'+ ${Employee.ename} + ${Employee.id} +'.jpg'}" width="40" height="40">
+                </a>
+              </td>
               <td th:text="${Employee.empCode}"></td>
               <td th:text="${Employee.ename}"></td>
               <td th:text="${Employee.job}"></td>
@@ -438,6 +434,8 @@
             
           </tbody>
         </table>
+        </div>
+        </div>
         <!-- page end-->
       </section>
     </section>
@@ -459,7 +457,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+          <h5 class="modal-title" id="exampleModalLabel">New employee form</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -566,6 +564,24 @@
       </div>
     </div>
   </div>
+  <div class="modal fade" tabindex="-1" role="dialog" id="photoModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Photo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <img id="employeePhoto" src="" width="95%" height="95%">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div> 
   <!-- javascripts -->
   <script src="js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
@@ -575,7 +591,7 @@
   <!--custome script for all page-->
   <script src="js/scripts.js"></script>
   <script src="js/employee.js"></script>
-
+  <script src="js/clock.js"></script>
 </body>
 
 </html>

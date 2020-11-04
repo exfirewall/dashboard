@@ -18,4 +18,11 @@ $('document').ready(function(){
         $('#deleteModal').modal();
     });
 
+    $('table #photoButton').on('click',function(event) {
+        event.preventDefault();
+        var href = $(this).attr('href');
+        $('#employeePhoto').attr('src', href);
+        $('#photoModal').modal();		
+    });
+
 });
