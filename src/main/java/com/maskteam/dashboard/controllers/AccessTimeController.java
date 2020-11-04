@@ -30,4 +30,3 @@ public class AccessTimeController {
         return "accesstime";
     }
 }
-
