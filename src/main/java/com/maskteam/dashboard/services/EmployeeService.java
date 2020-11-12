@@ -9,9 +9,11 @@ import com.maskteam.dashboard.models.Employee;
 import com.maskteam.dashboard.repositories.EmployeeRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Service;
 
 @Service
+@Configurable
 public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -44,5 +46,9 @@ public class EmployeeService {
     // Get by id
     public Optional<Employee> findById(Integer id) {
         return employeeRepository.findById(id);
+    }
+
+    public Optional<Employee> findByName(String name) {
+        return employeeRepository.findByEname(name);
     }
 }
