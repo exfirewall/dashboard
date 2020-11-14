@@ -50,7 +50,6 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}	
     
-    @Autowired
     private UserDetailsService userDetailsService;
 
     @Bean
@@ -61,4 +60,9 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 		provider.setPasswordEncoder(passwordEncoder());
 		return provider;
 	}
+
+	@Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    }
 }
